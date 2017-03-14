@@ -44,9 +44,6 @@ func _ready():
 	OS.set_window_maximized(true)
 	randomize()
 	var _root=get_tree().get_root()
-	print("Start print _root")
-	_root.print_tree()
-	print("Start print root")
 #	root = _root.get_child(_root.get_child_count()-1)
 	root = _root.get_node("root") # seems like this is easier to read. Not sure why the original devs didn't use this
 	root.print_tree()
@@ -110,7 +107,7 @@ func life_up():
 	var time = lf_time - LF_UP * progress.checks["1ShieldUpgrade"]
 	time -= LF_UP * LF_UP * progress.checks["2ShieldUpgrade"] + LF_UP * progress.checks["3ShieldUpgrade"]
 	if (not full_lifeforce):
-		snd_manager.play_sfx("ding")
+#		snd_manager.play_sfx("ding")
 		ui.get_node("Effects").play("FullHP")
 	full_lifeforce = true
 	lifeforce_timer.stop()
@@ -125,7 +122,7 @@ func life_down():
 			lifeforce_timer.stop()
 			root.get_node("DeathTimer").start()
 		else:
-			snd_manager.play_sfx("hurt",true)
+#			snd_manager.play_sfx("hurt",true)
 			lifeforce_timer.start()
 			full_lifeforce = false
 

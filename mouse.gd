@@ -1,8 +1,5 @@
 extends TileMap
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
 var root
 var camera
 var viewport_adj_x
@@ -35,26 +32,7 @@ func _process(delta):
 		if( sign(posy) == -1):
 			celly -= 1
 		var cell = get_cell(cellx, celly)
-		set_cell(cellx,celly,-1)
-		print(get_global_mouse_pos())
-#		print(get_local_mouse_pos())
+		if(cell == 0):
+			set_cell(cellx,celly, 1)
+		print(cell)
 	
-#func _input(ev):
-#	if (ev.is_action("ui_action")):
-#		var cpos = camera.get_global_pos()
-#		var coff = camera.get_offset()
-#		var posx = ((ev.x + cpos.x) - viewport_adj_x)
-#		var posy = ((ev.y + cpos.y) - viewport_adj_y)
-#		var cellx = int(posx / get_cell_size().x)
-#		var celly = int(posy / get_cell_size().y)
-#		if( sign(posx) == -1):
-#			cellx -= 1
-#		if( sign(posy) == -1):
-#			celly -= 1
-#		var cell = get_cell(cellx, celly)
-#		print(cpos)
-#		print(ev.x," ", ev.y)
-#		print(cell)
-#		set_cell(cellx,celly,-1)
-#		print(get_used_cells())
-#		print("Pressed mouse")

@@ -46,6 +46,9 @@ export var need_synchro = false
 #var dust = preload("res://scenes/dust.scn")
 var landed = false
 var stopped = false
+# Combat
+export var vulnerable = true
+var knockback = false
 # Death
 var dead = false
 # GUI
@@ -201,4 +204,13 @@ func stop(delta):
 func _on_jump_timerout():
 	if (jump):
 		velocity.y = -JUMP_VEL
+
+func _on_enemy_hit( body ):
+	print(body.get_groups())
+	if (body.is_in_group("Enemy")):
+		# Knockback some time maybe
+		if (not dead and vulnerable):
+			vulnerable = false
+			effects.play("Invulnerable")
+			controller.life_down()
 
